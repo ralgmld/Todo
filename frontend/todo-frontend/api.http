@@ -1,0 +1,32 @@
+# Test 할 때 id 값 바꿔서 하기!
+
+### 전체 할 일 목록 조회 (카테고리 필터 가능)
+GET http://localhost:8080/api/todos
+Accept: application/json
+
+### 특정 카테고리의 할 일 목록 조회
+GET http://localhost:8080/api/todos?category=업무
+Accept: application/json
+
+### 할 일 추가 (POST)
+POST http://localhost:8080/api/todos
+Content-Type: application/json
+
+{
+  "name": "Learn Spring Boot",
+  "completed": false,
+  "category": "회의"
+}
+
+### 할 일 수정 (PUT)
+PUT http://localhost:8080/api/todos/10
+Content-Type: application/json
+
+{
+  "name": "Learn Spring Boot - Updated",
+  "completed": true,
+  "category": "공부"
+}
+
+### 할 일 삭제 (DELETE)
+DELETE http://localhost:8080/api/todos/10
