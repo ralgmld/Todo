@@ -1,59 +1,90 @@
-# Todo
-## 1. 자신이 개발한 앱에 대한 설명
-설명 : 오늘 할 일을 카테고리별로 체크 및 메모를 하여 할 일을 정리할 수 있는 앱
+# 📝 1. Todo List App  
 
-# 주요 기능 
-- CRUD 작업
+오늘 할 일을 **카테고리별로 정리하고, 체크 및 메모**하여 관리할 수 있는 애플리케이션입니다.  
+할 일의 **진행률을 시각적으로 확인**할 수 있으며, **라이트/다크 모드** 기능도 지원합니다.  
 
-* 추가 기능
-- 카테고리별 조회 및 진행률 표시
-- 라이트`다크 모드
-- Memo 기능
+---
 
-## 2. 소스 빌드 및 실행 방법 메뉴얼
-- 환경 설정 
+## ✨ 주요 기능  
 
-프론트엔드: React.js
-백엔드: Spring Boot
-데이터베이스: MySQ
+✅ **CRUD (할 일 추가, 수정, 삭제, 조회)**  
+📌 **카테고리별 조회 및 진행률 표시**  
+🌙 **라이트/다크 모드**  
+📝 **메모 기능 (할 일별 추가 메모 가능)**  
 
-- 라이브러리
-백엔드 : Spring Boot, Spring Data JPA, Lombok, MySQL Driver, Swagger
-프론트엔드 : React, Axios
-- DB 설정
-MySQL Workbench Or MySQL에서 1) Migrations\DDL.sql 실행 2) Migrations\DML.sql 실행
+---
 
-- 백엔드 실행
-Spring Boot Dashboard 탭 > APPS의 Subject에서 Run 실행
+## 🚀 2. 소스 빌드 및 실행 방법  
 
-- 프론트엔드 실행
-cd todo-frontend
+###  1) 환경 설정  
+- **Frontend**: React.js  
+- **Backend**: Spring Boot  
+- **Database**: MySQL 8.0  
+  ※ 위의 프로그램이 설치되어 있어야 합니다.  
+
+###  2) 라이브러리 및 확장 프로그램  
+
+#### 🖥️ 백엔드 (Spring Boot)  
+- **Spring Boot**: REST API 서버 구현  
+- **Spring Data JPA**: 객체와 관계형 데이터베이스 매핑  
+- **Lombok**: Getter, Setter 자동 생성 및 코드 간소화  
+- **MySQL Driver**: MySQL과 연동  
+- **Swagger**: API 문서 자동화  
+
+#### 🎨 프론트엔드 (React.js)  
+- **Axios**: 백엔드 API와 데이터 통신  
+- **React Router**: 페이지 이동 처리  
+- **React Context API**: 전역 상태 관리 (다크/라이트 모드, Todo 목록 상태)  
+
+###  3) 데이터베이스 설정  
+1. MySQL 실행 후 `application.properties` 파일에서 **url, username, password를 환경에 맞게 수정**  
+2. MySQL에서 아래 명령어를 실행하여 테이블과 기본 데이터를 생성  
+
+   ```bash
+   mysql -u root -p < Migrations/DDL.sql
+   mysql -u root -p < Migrations/DML.sql
+
+###  4) 백엔드 실행
+
+코드 다운로드 : git clone https://github.com/ralgmld/Todo.git
+
+해당 폴더로 이동 : cd Todo
+
+
+의존성 설치 및 빌드 : ./gradlew build
+
+Spring Boot 서버 실행 : ./gradlew bootRun
+
+cf) spring boot bashboard에서 실행해도 무방
+###  5) 프론트엔드 실행
+cd frontend\todo-frontend
+
 npm install
+
 npm start
-cf) DB 스키마 및 기초데이터 백업파일 -> Migrations 폴더에 저장
 
-## 3. 주력으로 사용한 컴포넌트,라이브러리에 대한 설명 및 사용 이유 기입 
-- 컴포넌트
-TodoList.js : 할 일 목록을 표시하는 컴포넌트로 API에서 데이터를 불러옴
-	    사용 이유 - 전체 할 일 목록을 관리 및 API와의 연동 하여 데이터 동기화
-TodoItem.js : 목록에서 각 항목들을 표시하고 체크박스로 완료 상태를 변경, 수정 및 삭제
-	     사용 이유 - 사용자가 각 항목들을 관리
-TodoForm.js : 새로운 할 일을 추가하는 입력 폼
-	      사용 이유 - 할 일을 추가할 때 카테고리, 할 일 입력하여 추가
+실행 후 브라우저에서 👉 http://localhost:3000/ 접속
 
-- 라이브러리
-Spring Boot : REST API 서버 구현
-	     사용 이유 : 간결한 코드 작성
-Spring Data JPA : DB와 연동
-	          사용 이유 : 직접 SQL을 사용하지 않고도 사용 가능
-Lombok : Getter, Setter 자동 생성 및 코드 간소화
-	사용 이유 : 코드 가독성 향상
-MySQL : 데이터베이스
-	사용 이유 : 요구사항 반영
 
-## 4. Api 명세 작성 필수  Swagger 등 사용해도 무방함
-- Swagger 사용
+## 🏗️ 3. 주력으로 사용한 컴포넌트 및 라이브러리
+*컴포넌트*
+- TodoList.js    # 할 일 목록 표시, API에서 데이터 불러옴
 
-## 5. 테스트케이스 작성
-![image](https://github.com/user-attachments/assets/1b4067f7-2ba6-4fd8-8013-ca8270f24377)
+- TodoItem.js    # 개별 할 일 항목 표시 및 체크박스, 수정/삭제
+
+- TodoForm.js    # 새로운 할 일 추가하는 입력 폼
+
+*라이브러리*
+- Spring Boot: REST API 서버 구현  
+- Spring Data JPA: 객체와 관계형 데이터베이스 매핑  
+- Lombok: Getter, Setter 자동 생성 및 코드 간소화  
+- MySQL Driver: MySQL과 연동  
+- Swagger: API 문서 자동화
+
+
+## 📌 4. API 명세서
+Swagger UI에서 API 문서를 확인할 수 있습니다.
+👉 http://localhost:8080/swagger-ui/index.html
+
+## 📌 5. 테스트 케이스
 
